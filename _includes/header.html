@@ -1,0 +1,39 @@
+<svg style="position: absolute; top: -99999px" xmlns="http://www.w3.org/2000/svg">
+    <filter id="blue-glow" filterUnits="userSpaceOnUse" x="0%" y="0%" width="100%" height="100%">
+        <!-- blur the text at different levels-->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur10"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur20"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur30"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="50" result="blur50"/>
+        <!-- merge all the blurs except for the first one -->
+        <feMerge result="blur-merged">
+            <feMergeNode in="blur10"/>
+            <feMergeNode in="blur20"/>
+            <feMergeNode in="blur30"/>
+            <feMergeNode in="blur50"/>
+        </feMerge>
+        <!-- recolour the merged blurs red-->
+        <feColorMatrix result="blue-blur" in="blur-merged" type="matrix"
+        values="0   0    0    0   0
+                0   0.06 0    0   0
+                0.8 0    0.44 0   0
+                0   0    0    1   0" />
+        <feMerge>
+            <feMergeNode in="blue-blur"/>       <!-- largest blurs coloured red -->
+            <feMergeNode in="blur5"/>          <!-- smallest blur left white -->
+            <feMergeNode in="SourceGraphic"/>  <!-- original white text -->
+        </feMerge>
+    </filter>
+</svg>
+
+
+
+<!-- <text x="150" y="35" text-anchor="middle">SCORE:</text><text id="ui-score" x="250" y="35" text-anchor="middle">0000</text> -->
+
+<div class="row high-score">
+    <div class="col s12">
+        <h3 class="brand-title white-text">SCORE: <span id="ui-score">0000</span> </h3>
+    </div>
+
+</div>
