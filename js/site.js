@@ -17,7 +17,7 @@ class Site {
     }
 
     init() {
-        this.Asteroids.update();
+        this.Asteroids.init();
     }
 
     scrollTracker() {

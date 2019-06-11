@@ -6,79 +6,75 @@ class Asteroids {
         document.body.prepend( this._canvas );
         this._ctx = this._canvas.getContext( '2d' );
 
-        this._canvas.width = window.innerWidth;
-        this._canvas.height = window.innerHeight;
+        this._canvas.width = document.body.clientWidth;
+        this._canvas.height = document.body.clientHeight;
 
         this._isAnimating = true;
 
-        this.rotation = 0;
-
-        this.position = {
-            x: Math.random() * this._canvas.width,
-            y: Math.random() * this._canvas.height
-        }
-
-        this.velocity = {
-            x: 2 * ( Math.random() * 2 - 1 ),
-            y: 2 * ( Math.random() * 2 - 1 ),
-        }
-
-        // Set draw style
-        this._ctx.strokeStyle = '#ffffff';
-        this._ctx.lineWidth = 1;
-        this._ctx.filter = 'url(#blue-glow)';
-
-        // this.rock.arc( this.position.x, this.position.y, 25, 0, 2 * Math.PI );
+        this.spriteList = ['Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï'];
 
         // Start Position
         this._trackTransforms(this._ctx);
+
+        this.asteroids = [];
+
+        for (let i = 0; i < 10; i++) {
+            this.asteroids.push( this.generateRock() );
+        }
+
+
+    }
+
+    init() {
+        window.addEventListener( 'resize', site.debounce( () => {
+            console.log(' diggld');
+            this._canvas.width = document.body.clientWidth;
+            this._canvas.height = document.body.clientHeight;
+        }, 300 ));
+
+        this.update();
+    }
+
+    generateRock() {
+        return {
+            position: {
+                x: Math.random() * this._canvas.width,
+                y: Math.random() * this._canvas.height
+            },
+            velocity: {
+                x: 2 * ( Math.random() * 2 - 1 ),
+                y: 2 * ( Math.random() * 2 - 1 ),
+            },
+            sprite: this.getRandomSprite( this.spriteList ),
+        }
+    }
+
+    getRandomSprite( list ) {
+        return list[ ~~(list.length * Math.random() ) ];
     }
 
     draw() {
         // Clear the entire canvas
-		// const p1 = this._ctx.transformedPoint( 0, 0 );
-		// const p2 = this._ctx.transformedPoint( this._canvas.width, this._canvas.height );
-		// this._ctx.clearRect( p1.x, p1.y, p2.x - p1.x, p2.y - p1.y );
-
         this._ctx.clearRect( 0, 0, this._canvas.width, this._canvas.height );
 
-        // this._ctx.fillStyle = '#000000';
-		// this._ctx.fillRect( 0, 0, this._canvas.width, this._canvas.height );
-        // this._ctx.beginPath();
-
-
+        // Set draw style
+        this._ctx.strokeStyle = '#6b6b6b';
+        this._ctx.lineWidth = 1;
+        this._ctx.filter = 'url(#blue-glow)';
         this._ctx.font = '70px Vector Battle';
 
-        // var rectangle = new Path2D();
-        // rectangle.rect(10, 10, 50, 50);
+        this.asteroids.forEach( rock => {
 
-        // this.rock = new Path2D();
-        this.velocity.x = ( this.position.x + 70 >= window.innerWidth  || this.position.x - 45 <= 0  )  ? -this.velocity.x : this.velocity.x;
-        this.velocity.y = ( this.position.y >= window.innerHeight || this.position.y - 45 <= 0 ) ? -this.velocity.y : this.velocity.y;
+            rock.velocity.x = ( rock.position.x + 70 >= this._canvas.width  || rock.position.x - 45 <= 0  )  ? -rock.velocity.x : rock.velocity.x;
+            rock.velocity.y = ( rock.position.y >= this._canvas.height || rock.position.y - 45 <= 0 ) ? -rock.velocity.y : rock.velocity.y;
 
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+            rock.position.x += rock.velocity.x;
+            rock.position.y += rock.velocity.y;
 
-        this.rotation++;
 
-        // this._ctx.save();
+            this._ctx.strokeText( rock.sprite, rock.position.x, rock.position.y );
 
-        // this._ctx.translate( this.position.x, this.position.y);
-        // this._ctx.rotate( -Math.PI / 4 * this.rotation );
-        // this._ctx.textAlign = 'center';
-        this._ctx.strokeText( 'Ê', this.position.x, this.position.y );
-        // this._ctx.fillText(text, 0, font / 2);
-        // this._ctx.restore();
-
-        // this.rock.moveTo( this.position.x, this.position.y );
-        // this.rock.arc( this.position.x, this.position.y, 25, 0, 2 * Math.PI );
-
-        // var p = new Path2D('M10 10 h 80 v 80 h -80 Z');
-        // this._ctx.stroke (p);
-        // this._ctx.stroke(rectangle);
-        // this._ctx.stroke( this.rock );
-        // this._ctx.closePath();
-
+        });
     }
 
     update() {
