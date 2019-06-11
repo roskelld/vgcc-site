@@ -55,12 +55,12 @@ class Asteroids {
 
     draw() {
         // Clear the entire canvas
+        this._ctx.filter = 'url(#blue-glow)';
         this._ctx.clearRect( 0, 0, this._canvas.width, this._canvas.height );
 
         // Set draw style
         this._ctx.strokeStyle = '#6b6b6b';
         this._ctx.lineWidth = 1;
-        this._ctx.filter = 'url(#blue-glow)';
         this._ctx.font = '70px Vector Battle';
 
         this.asteroids.forEach( rock => {
