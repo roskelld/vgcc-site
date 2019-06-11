@@ -39,13 +39,20 @@ h5 {
 }
 
 /* https://www.dafont.com/vector-battle.font */
-@font-face {font-family: "Vector Battle";
+/* @font-face {font-family: "Vector Battle";
     src: url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.eot");
     src: url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.eot?#iefix") format("embedded-opentype"),
     url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.woff2") format("woff2"),
     url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.woff") format("woff"),
     url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.ttf") format("truetype"),
     url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.svg#Vector Battle") format("svg");
+} */
+
+@font-face {
+    font-family: 'Vector Battle';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Vector Battle'), url('Vectorb.woff') format('woff');
 }
 
 .no-select {
