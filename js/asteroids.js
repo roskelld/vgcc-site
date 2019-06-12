@@ -32,7 +32,7 @@ class Asteroids {
             this._canvas.height = document.body.clientHeight;
         }, 300 ));
 
-        this.update();
+        // this.update();
     }
 
     generateRock() {

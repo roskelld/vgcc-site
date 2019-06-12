@@ -15,10 +15,10 @@
         </feMerge>
         <!-- recolour the merged blurs red-->
         <feColorMatrix result="blue-blur" in="blur-merged" type="matrix"
-        values="0   0    0    0   0
-                0   0.06 0    0   0
-                0.8 0    0.44 0   0
-                0   0    0    1   0" />
+            values="0   0    0    0   0
+                    0   0.06 0    0   0
+                    0.8 0    0.44 0   0
+                    0   0    0    1   0" />
         <feMerge>
             <feMergeNode in="blue-blur"/>       <!-- largest blurs coloured red -->
             <feMergeNode in="blur5"/>          <!-- smallest blur left white -->

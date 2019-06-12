@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 .height-10 {  height: 10vh; }
 .height-20 {  height: 20vh; }
 .height-30 {  height: 30vh; }
@@ -25,11 +29,29 @@
 }
 
 /* TEXT */
+@media screen and (max-width: 650px) {
+    h2 {
+        font-size: 24px !important;
+        margin: 0 !important;
+    }
+    h3 {
+        font-size: 15px !important;
+        line-height: 1.5em !important;
+    }
+    h4 {
+        font-size: 20px !important;
+    }
+    h5 {
+        font-size: 15px !important;
+    }
+}
 
-/* h4 {
-    line-height: 1.5em !important;
-} */
-
+@media screen and (min-width: 650px) {
+    h3 {
+        font-size: 25px !important;
+        line-height: 1.5em !important;
+    }
+}
 /* h5::first-line {
     line-height: 110%;
 } */
@@ -37,16 +59,6 @@
 h5 {
     line-height: 1.5em !important;
 }
-
-/* https://www.dafont.com/vector-battle.font */
-/* @font-face {font-family: "Vector Battle";
-    src: url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.eot");
-    src: url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/a75df1070f5fc3b905a759bda2303449.svg#Vector Battle") format("svg");
-} */
 
 @font-face {
     font-family: 'Vector Battle';
@@ -67,8 +79,8 @@ h5 {
 .high-score {
     /* font-family: "Vector Battle"; */
     position: fixed;
-    top: 10px;
-    left: 50px;
+    top: 1vh;
+    left: 2vw;
     margin: 0;
     padding: 0;
     display: block;
@@ -78,15 +90,37 @@ h5 {
 }
 
 .white-border {
+    white-space: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
     border: 1px solid white !important;
     border-radius: 0.5em !important;
     background-color: inherit !important;
+    padding: 0.1em 0.3em 0.2em 0.2em;
 }
 
 .green-border {
+    white-space: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
     border: 1px solid green !important;
     border-radius: 0.5em !important;
     background-color: inherit !important;
+    padding: 0.1em 0.3em 0.2em 0.2em;
+}
+
+.blue-border {
+    white-space: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
+    border: 1px solid #2196F3 !important;
+    border-radius: 0.5em !important;
+    background-color: inherit !important;
+    padding: 0.1em 0.3em 0.2em 0.2em;
+}
+
+.text-link {
+    font-weight: 100;
 }
 
 .blue-glow {

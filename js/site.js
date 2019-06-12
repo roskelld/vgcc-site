@@ -3,6 +3,9 @@ import Asteroids        from './asteroids.js';
 
 class Site {
     constructor() {
+
+        M.AutoInit();
+
         document.body.classList.add( 'black' );
         this.score = document.querySelector( '#ui-score' );
 
