@@ -31,8 +31,8 @@ class Asteroids {
             this._canvas.width = document.body.clientWidth;
             this._canvas.height = document.body.clientHeight;
         }, 300 ));
-
-        // this.update();
+        // this.draw();
+        this.update();
     }
 
     generateRock() {
@@ -55,7 +55,7 @@ class Asteroids {
 
     draw() {
         // Clear the entire canvas
-        this._ctx.filter = 'url(#blue-glow)';
+        // this._ctx.filter = 'url(#blue-glow)';
         this._ctx.clearRect( 0, 0, this._canvas.width, this._canvas.height );
 
         // Set draw style
