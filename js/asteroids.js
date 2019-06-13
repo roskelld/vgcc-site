@@ -2,6 +2,8 @@ import site     from './site.js';
 
 class Asteroids {
     constructor() {
+
+        // Setup Canvas
         this._canvas = document.createElement( 'canvas' );
         document.body.prepend( this._canvas );
         this._ctx = this._canvas.getContext( '2d' );
@@ -9,16 +11,17 @@ class Asteroids {
         this._canvas.width = document.body.clientWidth;
         this._canvas.height = document.body.clientHeight;
 
-        this._isAnimating = true;
-
+        // Setup Asteroid Sprites
         this.spriteList = ['Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï'];
+
+        this.num_of_asteroids = 5;
 
         // Start Position
         this._trackTransforms(this._ctx);
 
         this.asteroids = [];
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.num_of_asteroids; i++) {
             this.asteroids.push( this.generateRock() );
         }
 
@@ -31,7 +34,6 @@ class Asteroids {
             this._canvas.width = document.body.clientWidth;
             this._canvas.height = document.body.clientHeight;
         }, 300 ));
-        // this.draw();
         this.update();
     }
 
@@ -55,15 +57,16 @@ class Asteroids {
 
     draw() {
         // Clear the entire canvas
-        // this._ctx.filter = 'url(#blue-glow)';
+
         this._ctx.clearRect( 0, 0, this._canvas.width, this._canvas.height );
-
         // Set draw style
-        this._ctx.strokeStyle = '#6b6b6b';
+        this._ctx.strokeStyle = '#b8b8b8';
         this._ctx.lineWidth = 1;
-        this._ctx.font = '70px Vector Battle';
+        this._ctx.font = `${this._canvas.height / 10}px Vector Battle`;
+        // this._ctx.filter = 'url(#blue-glow)';
 
-        this.asteroids.forEach( rock => {
+        for (let i = 0; i < this.asteroids.length; i++) {
+            const rock = this.asteroids[i];
 
             rock.velocity.x = ( rock.position.x + 70 >= this._canvas.width  || rock.position.x - 45 <= 0  )  ? -rock.velocity.x : rock.velocity.x;
             rock.velocity.y = ( rock.position.y >= this._canvas.height || rock.position.y - 45 <= 0 ) ? -rock.velocity.y : rock.velocity.y;
@@ -73,8 +76,7 @@ class Asteroids {
 
 
             this._ctx.strokeText( rock.sprite, rock.position.x, rock.position.y );
-
-        });
+        }
     }
 
     update() {

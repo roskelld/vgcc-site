@@ -2,17 +2,19 @@ body {
     background-color: black;
 }
 
-.height-10 {  height: 10vh; }
-.height-20 {  height: 20vh; }
-.height-30 {  height: 30vh; }
-.height-40 {  height: 40vh; }
-.height-50 {  height: 50vh; }
-.height-60 {  height: 60vh; }
-.height-70 {  height: 70vh; }
-.height-80 {  height: 80vh; }
-.height-90 {  height: 90vh; }
-.height-100 {  height: 100vh; }
-
+@media screen and (min-width: 0px) {
+    .height-5  {  min-height: 5vh;  }
+    .height-10 {  min-height: 10vh; }
+    .height-20 {  min-height: 20vh; }
+    .height-30 {  min-height: 30vh; }
+    .height-40 {  min-height: 40vh; }
+    .height-50 {  min-height: 50vh; }
+    .height-60 {  min-height: 60vh; }
+    .height-70 {  min-height: 70vh; }
+    .height-80 {  min-height: 80vh; }
+    .height-90 {  min-height: 90vh; }
+    .height-100 {  min-height: 100vh; }
+}
 .full-page { height: 100vh; }
 
 .no-margin  { margin: 0 !important; }
@@ -30,6 +32,11 @@ body {
 
 /* TEXT */
 @media screen and (max-width: 650px) {
+    h1 {
+        font-size: 32px !important;
+        line-height: 39px !important;
+        margin: 0 !important;
+    }
     h2 {
         font-size: 24px !important;
         margin: 0 !important;
@@ -50,6 +57,13 @@ body {
     h3 {
         font-size: 25px !important;
         line-height: 1.5em !important;
+    }
+    h4  {
+        /* font-size: 25px !important; */
+        line-height: 1.5em !important;
+    }
+    h6 {
+        font-size: 1.2em !important;
     }
 }
 /* h5::first-line {
@@ -119,6 +133,16 @@ h5 {
     padding: 0.1em 0.3em 0.2em 0.2em;
 }
 
+.orange-border {
+    white-space: nowrap;
+    word-wrap: normal;
+    word-break: keep-all;
+    border: 1px solid #f4b921 !important;
+    border-radius: 0.5em !important;
+    background-color: inherit !important;
+    padding: 0.1em 0.3em 0.2em 0.2em;
+}
+
 .text-link {
     font-weight: 100;
 }
@@ -136,6 +160,14 @@ svg {
     filter: url('#blue-glow');
     font-weight: 100 !important;
     font-family: "Vector Battle", Helvetica, Arial, sansserif !important;
+    letter-spacing: 0.2em;
+}
+
+.staff-photo {
+    max-width: 300px;
+    border: 1px white solid;
+    border-radius: 21em;
+    padding: 4px;
 }
 
 .a {
@@ -159,14 +191,7 @@ canvas {
     z-index: 10000;
 }
 
-/* #game-canvas {
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-} */
+.bold {
+    font-weight: 700 !important;
+    font-style: oblique !important;
+}
