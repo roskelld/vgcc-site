@@ -1,38 +1,24 @@
-<svg style="position: absolute; top: -99999px" xmlns="http://www.w3.org/2000/svg">
-    <filter id="blue-glow">
-        <!-- blur the text at different levels-->
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5"/>
-        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur10"/>
-        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur20"/>
-        <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur30"/>
-        <feGaussianBlur in="SourceGraphic" stdDeviation="50" result="blur50"/>
-        <!-- merge all the blurs except for the first one -->
-        <feMerge result="blur-merged">
-            <feMergeNode in="blur10"/>
-            <feMergeNode in="blur20"/>
-            <feMergeNode in="blur30"/>
-            <feMergeNode in="blur50"/>
-        </feMerge>
-        <!-- recolour the merged blurs red-->
-        <feColorMatrix result="blue-blur" in="blur-merged" type="matrix"
-            values="0   0    0    0   0
-                    0   0.06 0    0   0
-                    0.8 0    0.44 0   0
-                    0   0    0    1   0" />
-        <feMerge>
-            <feMergeNode in="blue-blur"/>       <!-- largest blurs coloured red -->
-            <feMergeNode in="blur5"/>          <!-- smallest blur left white -->
-            <feMergeNode in="SourceGraphic"/>  <!-- original white text -->
-        </feMerge>
-    </filter>
-</svg>
+<!-- HIGH SCORE NAV BAR -->
+<div class="navbar-fixed">
+    <nav class="z-depth-0 dark-trans-to-trans-down">
+        <div class="nav-wrapper">
+            <h3 class="arcade-font white-text margin-t-0_5 margin-l-0_5">SCORE: <span id="ui-score">0000</span> </h3>
+        </div>
+    </nav>
+</div>
 
 
-
-
-<div class="row high-score">
-    <div class="col s12">
-        <h3 class="brand-title white-text">SCORE: <span id="ui-score">0000</span> </h3>
-    </div>
-
+<!-- SETUP CALL BUTTON -->
+<div class="fixed-action-btn">
+    <p class="call-btn-text center grey-text text-lighten-1" style="font-size: 14px; filter: blur(0.2px); transform: scale(1.3, 1);">
+        AUX
+    </p>
+    <a href="{{site.meeting}}" target="_blank" class="btn-floating btn-large green-border pulse call-btn">
+        <p class="call-btn-text black-text" style="font-size: 27px; filter: blur(0.2px); transform: scale(1.1, 0.7);">
+            CALL
+        </p>
+    </a>
+    <p class="call-btn-text center grey-text text-lighten-1" style="font-size: 11px; filter: blur(0.1px); transform: scale(1.2, 1);">
+        PUSH SELECT
+    </p>
 </div>

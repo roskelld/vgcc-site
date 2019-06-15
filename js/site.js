@@ -9,11 +9,16 @@ class Site {
         document.body.classList.add( 'black' );
         this.score = document.querySelector( '#ui-score' );
 
-        this.number = 0;
+
+
+        this.number = Number( window.localStorage.getItem( 'score' ) );
+        this.score.textContent = `${this.padToFour( this.number )}`;
 
         document.addEventListener( 'scroll', this.debounce( () => {
-            this.number += Math.floor( this.scrollTracker() );
-            this.score.textContent = `${this.padToFour( this.number )}`;
+
+            this.scoreAdd( Math.floor( this.scrollTracker() ) );
+            // this.number += Math.floor( this.scrollTracker() );
+
         }, 300 ));
 
         this.Asteroids = new Asteroids();
@@ -40,6 +45,12 @@ class Site {
             clearTimeout( timeout );
             timeout = setTimeout( functionCall, time );
         }
+    }
+
+    scoreAdd( number ) {
+        this.number += number;
+        this.score.textContent = `${this.padToFour( this.number )}`;
+        window.localStorage.setItem( 'score', this.number );
     }
 }
 

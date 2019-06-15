@@ -11,10 +11,13 @@ class Asteroids {
         this._canvas.width = document.body.clientWidth;
         this._canvas.height = document.body.clientHeight;
 
+        this._ctx.font = `${this._canvas.height / 10}px Vector Battle`;
+
         // Setup Asteroid Sprites
         this.spriteList = ['Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï'];
 
         this.num_of_asteroids = 5;
+        this.asteroid_color = '#4d4d4d';
 
         // Start Position
         this._trackTransforms(this._ctx);
@@ -30,7 +33,6 @@ class Asteroids {
 
     init() {
         window.addEventListener( 'resize', site.debounce( () => {
-            console.log(' diggld');
             this._canvas.width = document.body.clientWidth;
             this._canvas.height = document.body.clientHeight;
         }, 300 ));
@@ -60,20 +62,32 @@ class Asteroids {
 
         this._ctx.clearRect( 0, 0, this._canvas.width, this._canvas.height );
         // Set draw style
-        this._ctx.strokeStyle = '#b8b8b8';
+        this._ctx.strokeStyle = this.asteroid_color;
         this._ctx.lineWidth = 1;
-        this._ctx.font = `${this._canvas.height / 10}px Vector Battle`;
-        // this._ctx.filter = 'url(#blue-glow)';
 
+        // this._ctx.filter = 'url(#blue-glow)';
+        this._ctx.font = `${this._canvas.height / 10}px Vector Battle`;
         for (let i = 0; i < this.asteroids.length; i++) {
             const rock = this.asteroids[i];
 
-            rock.velocity.x = ( rock.position.x + 70 >= this._canvas.width  || rock.position.x - 45 <= 0  )  ? -rock.velocity.x : rock.velocity.x;
-            rock.velocity.y = ( rock.position.y >= this._canvas.height || rock.position.y - 45 <= 0 ) ? -rock.velocity.y : rock.velocity.y;
+            // rock.velocity.x = ( rock.position.x + 70 >= this._canvas.width )  ? -rock.velocity.x : rock.velocity.x;
+            // rock.velocity.y = ( rock.position.y >= this._canvas.height || rock.position.y - 45 <= 0 ) ? -rock.velocity.y : rock.velocity.y;
+
+
+            if ( rock.position.x >= this._canvas.width ) {
+                rock.position.x = 0;
+            } else if ( rock.position.x <= 0 ) {
+                rock.position.x = this._canvas.width;
+            }
+
+            if ( rock.position.y <= 0 ) {
+                rock.position.y = this._canvas.height;
+            } else if ( rock.position.y >= this._canvas.height ) {
+                rock.position.y = 0;
+            }
 
             rock.position.x += rock.velocity.x;
             rock.position.y += rock.velocity.y;
-
 
             this._ctx.strokeText( rock.sprite, rock.position.x, rock.position.y );
         }

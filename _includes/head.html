@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>{{ page.title }}</title>
+<title>{{ page.company }}</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <!-- Open Graph -->
@@ -26,5 +26,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- FONTS -->
-<!-- <link href="//db.onlinewebfonts.com/c/a75df1070f5fc3b905a759bda2303449?family=Vector+Battle" rel="stylesheet" type="text/css"/> -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Orbitron:900&display=swap" rel="stylesheet">
+
+<svg style="position: absolute; top: -99999px" xmlns="http://www.w3.org/2000/svg">
+    <filter id="blue-glow">
+        <!-- blur the text at different levels-->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur10"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur20"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur30"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="50" result="blur50"/>
+        <!-- merge all the blurs except for the first one -->
+        <feMerge result="blur-merged">
+            <feMergeNode in="blur10"/>
+            <feMergeNode in="blur20"/>
+            <feMergeNode in="blur30"/>
+            <feMergeNode in="blur50"/>
+        </feMerge>
+        <!-- recolour the merged blurs red-->
+        <feColorMatrix result="blue-blur" in="blur-merged" type="matrix"
+            values="0   0    0    0   0
+                    0   0.06 0    0   0
+                    0.8 0    0.44 0   0
+                    0   0    0    1   0" />
+        <feMerge>
+            <feMergeNode in="blue-blur"/>       <!-- largest blurs coloured red -->
+            <feMergeNode in="blur5"/>          <!-- smallest blur left white -->
+            <feMergeNode in="SourceGraphic"/>  <!-- original white text -->
+        </feMerge>
+    </filter>
+</svg>
