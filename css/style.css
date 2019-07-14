@@ -1,6 +1,13 @@
 body {
     background-color: black;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+   flex: 1 0 auto;
+ }
 
 @media screen and (min-width: 0px) {
     .height-5  {  min-height: 5vh;  }
@@ -15,8 +22,6 @@ body {
     .height-90 {  min-height: 90vh; }
     .height-100 {  min-height: 100vh; }
 }
-
-.full-page { height: 100vh; }
 
 .no-margin  { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
@@ -52,12 +57,30 @@ body {
 .padding-l-4   { padding-left: 4em !important; }
 .padding-l-5   { padding-left: 5em !important; }
 
-.padding-t-20vh { padding-top: 20vh !important; }
+.padding-t-0_5 { padding-top: 0.5em !important; }
+.padding-t-1   { padding-top: 1em !important; }
+.padding-t-2   { padding-top: 2em !important; }
+.padding-t-3   { padding-top: 3em !important; }
+.padding-t-4   { padding-top: 4em !important; }
+.padding-t-5   { padding-top: 5em !important; }
 
-.padding-b-10vh { padding-bottom: 10vh !important; }
-.padding-b-20vh { padding-bottom: 20vh !important; }
+.padding-b-0_5 { padding-bottom: 0.5em !important; }
+.padding-b-1   { padding-bottom: 1em !important; }
+.padding-b-2   { padding-bottom: 2em !important; }
+.padding-b-3   { padding-bottom: 3em !important; }
+.padding-b-4   { padding-bottom: 4em !important; }
+.padding-b-5   { padding-bottom: 5em !important; }
 
-/* TEXT */
+.padding-t-5  { padding-top:  5vh !important; }
+.padding-t-10 { padding-top: 10vh !important; }
+.padding-t-15 { padding-top: 15vh !important; }
+.padding-t-20 { padding-top: 20vh !important; }
+
+.padding-b-5  { padding-bottom:  5vh !important; }
+.padding-b-15 { padding-bottom: 15vh !important; }
+.padding-b-10 { padding-bottom: 10vh !important; }
+.padding-b-20 { padding-bottom: 20vh !important; }
+
 @media screen and (max-width: 650px) {
     h1 {
         font-size: 32px !important;
@@ -74,9 +97,13 @@ body {
     }
     h4 {
         font-size: 20px !important;
+        line-height: 163% !important;
     }
     h5 {
         font-size: 15px !important;
+    }
+    h6 {
+        line-height: 183% !important;
     }
 }
 
@@ -86,19 +113,38 @@ body {
         line-height: 1.5em !important;
     }
     h4  {
-        /* font-size: 25px !important; */
         line-height: 1.5em !important;
+        line-height: 163% !important;
     }
     h6 {
         font-size: 1.2em !important;
+        line-height: 183%;
     }
 }
-/* h5::first-line {
-    line-height: 110%;
-} */
 
 h5 {
     line-height: 1.5em !important;
+}
+
+.hero-text {
+    padding: 1em 0 0 0;
+    font-size: 1.64rem;
+    font-weight: 400;
+    line-height: 2.3em;
+}
+
+.small {
+    font-size: small;
+}
+
+a.arcade-font:hover {
+    filter: url('#blue-glow') !important;
+    color: white !important;
+}
+
+input.btn-flat:hover {
+    filter: url('#blue-glow') !important;
+    color: white !important;
 }
 
 @font-face {
@@ -118,7 +164,6 @@ h5 {
 }
 
 .high-score {
-    /* font-family: "Vector Battle"; */
     position: fixed;
     top: 1vh;
     left: 2vw;
@@ -126,8 +171,6 @@ h5 {
     padding: 0;
     display: block;
     z-index: 0;
-    /* font-size: 4em; */
-
 }
 
 .white-border {
@@ -135,7 +178,7 @@ h5 {
     word-wrap: normal;
     word-break: keep-all;
     border: 1px solid white !important;
-    border-radius: 0.5em !important;
+    /* border-radius: 0.5em !important; */
     background-color: inherit !important;
     padding: 0.1em 0.3em 0.2em 0.2em;
 }
@@ -193,12 +236,11 @@ h5 {
 }
 
 svg {
-  /* background-color: black; */
   width: 100%;
 }
 
 .arcade-font {
-    filter: url('#blue-glow');
+    /* filter: url('#blue-glow'); */
     font-weight: 100 !important;
     font-family: "Vector Battle", Helvetica, Arial, sansserif !important;
     letter-spacing: 0.2em;
@@ -220,7 +262,6 @@ svg {
 text {
   font-family: "Vector Battle", Helvetica, Arial, sansserif !important;
   font-size: 1.5em !important;
-  /* font-weight: 900; */
   fill: rgb(212, 212, 212);
   filter: url(#blue-glow);
 }
@@ -242,7 +283,6 @@ canvas {
 .call-btn {
     padding-top: 4px !important;
     background-color: rgba( 37, 223, 126, 0.7 ) !important;
-    /* background-color: #1cd80838 !important; */
     height: 27px !important;
     line-height: 18px !important;
     font-weight: 1000;
@@ -250,13 +290,18 @@ canvas {
     border-radius: 1px !important;
 }
 
-/* .call-btn p {
-    color: yellow !important;
-} */
-
 .call-btn-text {
     letter-spacing: 2px;
     font-family: 'Orbitron', sans-serif;
     opacity: 0.7;
+}
 
+.staff-block {
+    margin: 0 auto;
+    padding: 0 2rem;
+    max-width: 37rem;
+}
+
+.no-break {
+    white-space: nowrap;
 }

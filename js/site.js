@@ -12,6 +12,7 @@ class Site {
 
 
         this.number = Number( window.localStorage.getItem( 'score' ) );
+        if ( isNaN( this.number ) ) this.number = 0;
         this.score.textContent = `${this.padToFour( this.number )}`;
 
         document.addEventListener( 'scroll', this.debounce( () => {
@@ -48,6 +49,7 @@ class Site {
     }
 
     scoreAdd( number ) {
+        if ( isNaN( number ) ) number = 0;
         this.number += number;
         this.score.textContent = `${this.padToFour( this.number )}`;
         window.localStorage.setItem( 'score', this.number );

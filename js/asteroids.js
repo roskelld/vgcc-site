@@ -74,15 +74,15 @@ class Asteroids {
             // rock.velocity.y = ( rock.position.y >= this._canvas.height || rock.position.y - 45 <= 0 ) ? -rock.velocity.y : rock.velocity.y;
 
 
-            if ( rock.position.x >= this._canvas.width ) {
-                rock.position.x = 0;
-            } else if ( rock.position.x <= 0 ) {
+            if ( rock.position.x + 30 <= 0 ) {
                 rock.position.x = this._canvas.width;
+            } else if ( rock.position.x - 30 >= this._canvas.width ) {
+                rock.position.x = 0;
             }
 
-            if ( rock.position.y <= 0 ) {
+            if ( rock.position.y + 30 <= 0 ) {
                 rock.position.y = this._canvas.height;
-            } else if ( rock.position.y >= this._canvas.height ) {
+            } else if ( rock.position.y - 30 >= this._canvas.height ) {
                 rock.position.y = 0;
             }
 
@@ -91,6 +91,7 @@ class Asteroids {
 
             this._ctx.strokeText( rock.sprite, rock.position.x, rock.position.y );
         }
+
     }
 
     update() {

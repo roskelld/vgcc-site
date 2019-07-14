@@ -1,11 +1,24 @@
 <!-- HIGH SCORE NAV BAR -->
 <div class="navbar-fixed">
     <nav class="z-depth-0 dark-trans-to-trans-down">
-        <div class="nav-wrapper">
-            <h3 class="arcade-font white-text margin-t-0_5 margin-l-0_5">SCORE: <span id="ui-score">0000</span> </h3>
+        <div class="nav-wrapper arcade-font white-text margin-t-0_5 margin-l-0_5">
+            <span class="no-select">SCORE: <span id="ui-score">0000</span> </span>
+            <a href="#" data-target="mobile-nav-menu" class="sidenav-trigger right">=</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#section-team" class="arcade-font white-text">TEAM</a></li>
+                <li><a href="#section-about" class="arcade-font white-text">ABOUT</a></li>
+                <li><a href="#section-contact" class="arcade-font white-text">CONTACT</a></li>
+            </ul>
         </div>
     </nav>
 </div>
+
+<ul class="sidenav black arcade-font white-text" id="mobile-nav-menu" style="width: 140px !important;">
+    <li><a href="#section-team" class="arcade-font white-text">TEAM</a></li>
+    <li><a href="#section-about" class="arcade-font white-text">ABOUT</a></li>
+    <li><a href="#section-contact" class="arcade-font white-text">CONTACT</a></li>
+</ul>
+
 
 
 <!-- SETUP CALL BUTTON -->
