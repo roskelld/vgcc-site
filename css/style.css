@@ -2,6 +2,13 @@ body {
     background-color: #2a2f36;
 }
 
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
 /* SITE COLORS */
 .site-grey { background-color: #2a2f36 !important; }
 
@@ -15,19 +22,33 @@ body {
     margin: auto;
 }
 
+.full-panel {
+    min-height: 80vh;
+    display: inline-flex;
+}
+
+.full-panel .center-panel {
+    margin: auto !important;
+}
+
+.stats-panel {
+    position: relative;
+    top: 10vh;
+}
+
 h0 {
     font-size: 6rem;
     font-weight: 1000;
 }
 
 .hero {
-    padding-left: 1.5rem;
+    padding-left: 1.5rem !important;
 }
 
 .hero h1 {
     margin: 3rem 0;
     font-size: 5.2rem;
-    line-height: 1.13;
+    line-height: 1.23;
     font-weight: 500;
 }
 
@@ -59,7 +80,7 @@ a {
 }
 
 a:hover {
-    border-bottom: 3px solid yellow;
+    border-bottom: 8px solid yellow;
 }
 
 p {
@@ -90,7 +111,11 @@ p {
 /* MATERIALIZE HACKS */
 
 nav ul li.active {
-    border-bottom: 3px solid yellow;
+    border-bottom: 3px solid yellow !important;
+}
+
+a.active {
+    border-bottom: 3px solid yellow !important;
 }
 
 .z-depth-0 {
