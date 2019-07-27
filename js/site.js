@@ -19,8 +19,6 @@ class Site {
         };
 
         this.countersEl = document.querySelectorAll( '.counter ');
-        this.napEl = document.querySelector( '#nap-counter' );
-
         this.counters = [];
 
         this.countersEl.forEach( counter => {
@@ -29,10 +27,10 @@ class Site {
             } ) );
         });
 
-        this.nap = new CountUp( 'nap-counter', 20037, {
+        this.counters.push( new CountUp( 'nap-counter', 20037, {
             duration: 79999,
             startVal: 10024,
-        });
+        }) );
 
         // instantiate the scrollama
         const scroller = scrollama();
@@ -42,11 +40,15 @@ class Site {
           .setup({
             step: '.step',
             offset: 1,
-            debug: true
+            once: true
           })
           .onStepEnter(response => {
             // { element, index, direction }
-            this.counters.forEach( c => c.start() );
+
+            this.counters.forEach( c => {
+                if ( response.index == c.el.dataset.scrollamaIndex )
+                    c.start();
+            } );
           })
           .onStepExit(response => {
             // { element, index, direction }
@@ -55,9 +57,6 @@ class Site {
 
         // setup resize event
         window.addEventListener('resize', scroller.resize);
-
-
-        this.nap.start();
 
         // Section Tracker ScrollSpy
         this.section_elems = document.querySelectorAll('.scrollspy');

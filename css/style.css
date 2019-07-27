@@ -12,18 +12,32 @@ body {
 /* SITE COLORS */
 .site-grey { background-color: #2a2f36 !important; }
 
+
+ /* PANEL SIZES */
+
 .full {
-    min-height: 80vh;
+    min-height: 90vh !important;
 }
 
 .full-height {
     position: relative;
     display: flex;
-    height: 85vh;
+    min-height: 100% !important;
 }
 
 .full-height .center-center {
     margin: auto;
+}
+
+.full-height .center-height {
+    margin: auto 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .full-height {
+        min-height: 50% !important;
+    }
 }
 
 .full-panel {
@@ -45,6 +59,14 @@ h0 {
     font-weight: 1000;
 }
 
+@media screen and (max-width: 700px) {
+    h0 {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+}
+
+
 .hero {
     padding-left: 1.5rem !important;
 }
@@ -60,11 +82,7 @@ h0 {
     margin: 3rem 0;
 }
 
-@media screen and (max-width: 568px) {
-    .full-height {
-        height: inherit;
-    }
-
+@media screen and (max-width: 740px) {
     .hero h1 {
         font-size: 2.5rem;
         line-height: 1.4;
@@ -112,7 +130,25 @@ p {
 
 }
 
+@media screen and (max-width: 680px) {
+    .staff-photo {
+        max-width: 150px;
+    }
+}
+
 /* MATERIALIZE HACKS */
+
+@media screen and (max-width: 650px) {
+    .btn-large {
+        font-size: 9px !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .btn-large {
+        font-size: 10px !important;
+    }
+}
 
 nav ul li.active {
     border-bottom: 3px solid yellow !important;
