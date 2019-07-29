@@ -1,5 +1,7 @@
 body {
     background-color: #2a2f36;
+    overflow-y: scroll;
+    scroll-behavior: auto;
 }
 
 .no-padding {
@@ -109,6 +111,12 @@ a:hover {
 p {
     line-height: 2rem;
     font-size: 1.2rem;
+}
+
+p.small-text {
+    line-height: 1.8rem;
+    font-size: 1rem;
+    margin: 1rem 1rem;
 }
 
 /* VISUAL ELEMENTS */
